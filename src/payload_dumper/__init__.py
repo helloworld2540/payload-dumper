@@ -40,7 +40,7 @@ def main():
         help="list partitions in the payload file",
     )
     parser.add_argument(
-        "--no-output",
+        "--no-output-file",
         action="store_true",
         help="change '--list' behavior to only print partition names, no create files and directory in current work directory.",
     )
@@ -52,7 +52,7 @@ def main():
     parser.add_argument("--header", action="append", nargs=2)
     args = parser.parse_args()
 
-    output_files = (not args.no_output) if args.list else True
+    output_files = (not args.no_output_file) if args.list else True
     # Check for --out directory exists
     if (not os.path.exists(args.out)) and output_files:
         os.makedirs(args.out)
